@@ -13,17 +13,14 @@ abstract class BaseApiProvider {
             if(response.isSuccessful){
                 return response.body() as T
             }else{
-
-                val errors = ArrayList<String?>()
-                errors.add(response.errorBody()?.toString() ?: "")
-                return BaseResponse<T>(false, response.code(), errors = errors) as T
+                return BaseResponse<T>(false, response.code(), error = response.errorBody()?.toString() ?: "") as T
             }
 
         }catch (e: Exception) {
             e.printStackTrace()
             val errors = ArrayList<String?>()
             errors.add(e.localizedMessage)
-            return BaseResponse<T>(false, errors = errors) as T
+            return BaseResponse<T>(false, error = e.localizedMessage) as T
         }
     }
 }

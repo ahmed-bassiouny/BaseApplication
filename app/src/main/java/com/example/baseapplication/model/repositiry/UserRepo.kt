@@ -6,7 +6,7 @@ import com.Akoon.akoon.model.api.BaseResponse
 import com.Akoon.akoon.model.entity.UserEntity
 import com.google.gson.Gson
 
-class UserRepo(private var apiProvider: ApiProvider, var pref: PreferenceHelper) {
+class UserRepo( var apiProvider: ApiProvider, var pref: PreferenceHelper) {
 
     fun login(userEntity: UserEntity,result:(res:BaseResponse<UserEntity>) -> Unit) {
        apiProvider.login(userEntity,result)
@@ -15,4 +15,6 @@ class UserRepo(private var apiProvider: ApiProvider, var pref: PreferenceHelper)
     fun getUserToken():String{
         return pref.userToken
     }
+
+    fun getStr() = ""
 }

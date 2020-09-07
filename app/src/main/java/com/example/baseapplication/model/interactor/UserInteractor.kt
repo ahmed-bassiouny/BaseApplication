@@ -14,7 +14,7 @@ class UserInteractor(var userRepo: UserRepo) {
                 // save user object in shared pref
                 result(true, "")
             } else {
-                result(false, it.errors?.get(0) ?: "")
+                result(false, it.error ?: "")
             }
         }
     }

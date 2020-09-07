@@ -16,9 +16,9 @@ class MyApp : Application() {
             modules(
                 listOf(
                     preferencesModule,
+                    networkModule,
                     repoModule,
-                    interactorModule,
-                    networkModule
+                    interactorModule
                 )
             )
 

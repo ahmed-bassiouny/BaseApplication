@@ -15,8 +15,11 @@ interface ApiService {
     }
 
 
-    @GET("cities")
+    @GET("")
      suspend fun login(): Response<BaseResponse<UserEntity>>
+
+    @GET("cities")
+    suspend fun getCities(): Response<BaseResponse<List<CityEntity>>>
 
 
 }

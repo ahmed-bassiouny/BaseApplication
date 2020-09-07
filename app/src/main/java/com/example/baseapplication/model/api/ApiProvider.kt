@@ -10,6 +10,12 @@ class ApiProvider(private var apiService: ApiService): BaseApiProvider() {
             result.invoke(apiRequest { apiService.login() })
         }
     }
+
+    fun getCities(result: (res: BaseResponse<List<CityEntity>>) -> Unit) {
+        coroutineScope = Coroutines.main {
+            result.invoke(apiRequest { apiService.getCities() })
+        }
+    }
 }
 
 

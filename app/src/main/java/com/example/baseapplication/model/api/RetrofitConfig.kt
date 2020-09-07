@@ -21,36 +21,33 @@ private val TINE_UNIT_FOR_CONNECTION = TimeUnit.MINUTES
 
 object RetroClient {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        return Retrofit.Builder().baseUrl("")
+        return Retrofit.Builder().baseUrl("https://api.thechefz.co/v8/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create()).build()
     }
 
     fun provideOkHttpClient(authInterceptor: AuthInterceptor): OkHttpClient {
-
-        val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
-            level =
-                if (true) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-        }
-        return OkHttpClient.Builder()
+        return OkHttpClient().newBuilder()
             .readTimeout(READ_TIME_OUT_CONNECTION.toLong(), TINE_UNIT_FOR_CONNECTION)
             .writeTimeout(WRITE_TIME_OUT_CONNECTION.toLong(), TINE_UNIT_FOR_CONNECTION)
             .connectTimeout(TIME_OUT_CONNECTION.toLong(), TINE_UNIT_FOR_CONNECTION)
+
             .addInterceptor(authInterceptor)
-            .addInterceptor(httpLoggingInterceptor).build()
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                level =
+                    HttpLoggingInterceptor.Level.BODY
+            }).build()
     }
 }
-
-class AuthInterceptor(var userRepo: UserRepo) : Interceptor {
+class AuthInterceptor(var pref: PreferenceHelper) : Interceptor {
     @Throws(IOException::class)
-    override fun intercept(chain: Interceptor.Chain): Response {
+    override fun intercept(chain: Interceptor.Chain): Response{
         var req = chain.request()
         // DONT INCLUDE API KEYS IN YOUR SOURCE CODE
         val url = req.url.newBuilder()
-            .addQueryParameter("token",userRepo.getUserToken())
+            .addQueryParameter("token", pref.userToken)
             .build()
         req = req.newBuilder().url(url).build()
         return chain.proceed(req)
     }
 }
-
