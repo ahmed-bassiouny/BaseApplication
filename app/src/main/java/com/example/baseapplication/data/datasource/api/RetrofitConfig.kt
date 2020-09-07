@@ -1,13 +1,10 @@
 package com.Akoon.akoon.model.api
 
 import com.Akoon.akoon.helper.PreferenceHelper
-import com.Akoon.akoon.model.repositiry.UserRepo
-import com.example.baseapplication.model.interactor.UserInteractor
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.android.BuildConfig
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException

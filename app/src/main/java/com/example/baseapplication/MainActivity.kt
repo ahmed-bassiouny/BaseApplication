@@ -3,7 +3,7 @@ package com.example.baseapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.baseapplication.model.interactor.CityInteractor
+import com.example.baseapplication.data.interactor.CityInteractor
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {

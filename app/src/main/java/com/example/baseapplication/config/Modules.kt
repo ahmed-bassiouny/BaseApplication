@@ -4,8 +4,8 @@ import android.content.Context
 import com.Akoon.akoon.helper.PreferenceHelper
 import com.Akoon.akoon.model.api.*
 import com.Akoon.akoon.model.repositiry.*
-import com.example.baseapplication.model.interactor.CityInteractor
-import com.example.baseapplication.model.interactor.UserInteractor
+import com.example.baseapplication.data.interactor.CityInteractor
+import com.example.baseapplication.data.interactor.UserInteractor
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 

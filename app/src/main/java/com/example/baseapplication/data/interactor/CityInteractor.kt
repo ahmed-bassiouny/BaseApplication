@@ -1,11 +1,7 @@
-package com.example.baseapplication.model.interactor
+package com.example.baseapplication.data.interactor
 
-import com.Akoon.akoon.helper.PreferenceHelper
-import com.Akoon.akoon.model.api.BaseResponse
 import com.Akoon.akoon.model.entity.CityEntity
-import com.Akoon.akoon.model.entity.UserEntity
 import com.Akoon.akoon.model.repositiry.CityRepo
-import com.Akoon.akoon.model.repositiry.UserRepo
 
 class CityInteractor(var repo: CityRepo) {
 

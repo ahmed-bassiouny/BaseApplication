@@ -16,7 +16,7 @@ abstract class BaseApiProvider {
                 return BaseResponse<T>(false, response.code(), error = response.errorBody()?.toString() ?: "") as T
             }
 
-        }catch (e: Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
             val errors = ArrayList<String?>()
             errors.add(e.localizedMessage)
